@@ -14,10 +14,9 @@ body {
     margin: 0 auto;
     max-width: 1000px;
     display: grid;
+    gap: 10px;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
-    gap: 10px;
-    grid-auto-flow: row;
     grid-template-areas:
     "header"
     "main-content"
@@ -48,15 +47,14 @@ div.header:hover {
 }
 div.main-content {
     display: grid;
-    grid-template-rows: 0.25fr auto 0.75fr;
+    grid-template-rows: 0.5fr auto 0.5fr;
     justify-content: center;
     align-items: center;
     color: #064974;
     background-color: #DEF1FF;
-    grid-auto-columns: 400px;
+    grid-auto-columns: 500px;
 }
 div.footer {
-    grid-area: footer;
     display: flex;
     padding: 10px;
     justify-content: center;
@@ -70,9 +68,6 @@ div.footer {
 }
 div.footer:hover {
     opacity: 75%;
-}
-div.keyboard {
-    height: 500px;
 }
 .display-container {
     display: grid;
@@ -88,6 +83,7 @@ div.keyboard {
     color: #266289;
     font-family: 'Caveat', cursive;
 }
+
 .row1, .row2, .row3, .row4, .row5, .row6 {
     display: flex;
     border: 3px solid #DEF1FF;
@@ -103,6 +99,47 @@ div.keyboard {
 
 #sq1:hover, #sq2:hover, #sq3:hover, #sq4:hover, #sq5:hover, #sq6:hover, #sq7:hover, #sq8:hover, #sq9:hover, #sq10:hover, #sq11:hover, #sq12:hover, #sq13:hover, #sq14:hover, #sq15:hover, #sq16:hover, #sq17:hover, #sq18:hover, #sq19:hover, #sq20:hover, #sq21:hover, #sq22:hover, #sq23:hover, #sq24:hover, #sq25:hover, #sq26:hover, #sq27:hover, #sq28:hover, #sq29:hover, #sq30:hover {
     background-color: #AADAF5;
-    transition: 0.25s;
+    transition: all 0.25s;
 }
 
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    border: 4px solid white;
+    padding: 15px;
+    background-color: #AADAF5;;
+}
+
+.key {
+    padding: 5px 11px;
+    font-size: 20px;
+    background-color: #EFF9FF;
+    border: 3px solid #DEF1FF;
+    color: #0068AB;
+
+}
+.key:hover {
+    background-color: #AADAF5;
+    transition: all 0.15s;
+    scale: 102%;
+    border-color: white;
+}
+.key:active {
+    background-color: black;
+    color: #DEF1FF;
+    opacity: 50%;
+    transition: all 0.1s;
+}
+
+#back {
+    height: 16px;
+    width: auto;
+}
+#enter {
+
+}
