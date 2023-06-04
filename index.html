@@ -4,10 +4,7 @@
     <link rel="stylesheet" href="styles.css?v=1.4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Geologica:wght@300&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,13 +16,9 @@
     <div class="header">
         <h1>~World of Wordle~</h1>
     </div>
-    <div class="footer">
-        <p><em>made for GA by <strong>Nikita O'Keeffe</strong></em></p>
-        <img src="wowlogo.png" id="logo">
-    </div>
     <div class="main-content">
         <div id="results">
-            <h2>- player results go here -</h2>
+            <h2 id="result-msg">- player results go here -</h2>
         </div>
         <div class="display-container">
             <div id="sq1" class="row1"><p>T</p></div>
@@ -59,6 +52,7 @@
             <div id="sq29" class="row6"></div>
             <div id="sq30" class="row6"></div>
         </div>
+        <div class="keyboard-wrapper">
         <div class="keyboard">
             <div class="row" id="row-0">
                 <button class="key">Q</button>
@@ -92,11 +86,16 @@
                 <button class="key">B</button>
                 <button class="key">N</button>
                 <button class="key">M</button>
-                <button class="key">
+                <button class="key" id="backspace">
                     <img src="backspace.png" id="back">
                 </button>
             </div>
         </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p><em>made for GA by <strong>Nikita O'Keeffe</strong></em></p>
+        <img src="wowlogo.png" id="logo">
     </div>
 </div>
 <script src="script.js"></script>
