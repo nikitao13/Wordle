@@ -12,20 +12,35 @@
     <title>Wordle! ~</title>
 </head>
 <body>
+<audio id="btn-audio">
+    <source src="beep6.mp3">
+</audio>
+<audio id="win-audio">
+    <source src="win.mp3">
+</audio>
+<audio id="lose-audio">
+    <source src="lose.mp3">
+</audio>
+<audio id="key-click">
+    <source src="keyclick.mp3">
+</audio>
+<audio id="square-click">
+    <source src="squareclick.mp3">
+</audio>
 <div class="container">
     <div class="header">
         <h1>~World of Wordle~</h1>
     </div>
     <div class="main-content">
         <div id="results">
-            <h2 id="result-msg">- player results go here -</h2>
+            <h2 id="result-msg">Guess the word!</h2>
         </div>
         <div class="display-container">
-            <div id="sq1" class="row1"><p></p></div>
-            <div id="sq2" class="row1"><p></p></div>
-            <div id="sq3" class="row1"><p></p></div>
-            <div id="sq4" class="row1"><p></p></div>
-            <div id="sq5" class="row1"><p></p></div>
+            <div id="sq1" class="row1"></div>
+            <div id="sq2" class="row1"></div>
+            <div id="sq3" class="row1"></div>
+            <div id="sq4" class="row1"></div>
+            <div id="sq5" class="row1"></div>
             <div id="sq6" class="row2"></div>
             <div id="sq7" class="row2"></div>
             <div id="sq8" class="row2"></div>
@@ -53,7 +68,7 @@
             <div id="sq30" class="row6"></div>
         </div>
         <div class="keyboard-wrapper">
-        <div class="keyboard">
+        <div class="keyboard" id="keyboard">
             <div class="row" id="row-0">
                 <button class="key">Q</button>
                 <button class="key">W</button>
@@ -91,13 +106,17 @@
                 </button>
             </div>
         </div>
+            <button type="button" class="options" id="treasure-hunt">treasure hunt mode</button>
+            <button type="button" class="options" id="treasure-reset">reset game</button>
+            <button type="button" class="options" id="return-wordle">wordle mode</button>
         </div>
     </div>
     <div class="footer">
-        <p><em>made for GA by <strong>Nikita O'Keeffe</strong></em></p>
+        <p id="footer-text"><em>made for GA by <strong>Nikita O'Keeffe</strong></em></p>
         <img src="wowlogo.png" id="logo">
     </div>
 </div>
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
+<script type="module" src="wordlist.js"></script>
 </body>
 </html>

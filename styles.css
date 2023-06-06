@@ -260,3 +260,41 @@ div.footer:hover {
     min-width: 46px;
     min-height: 43px;
 }
+#treasure-hunt {
+    padding: 5px 11px;
+    font-size: 19px;
+    background-color: #EFF9FF;
+    border: 3px solid #DEF1FF;
+    color: #0068AB;
+    transition: all 0.6s;
+}
+#treasure-hunt:hover {
+    scale: 107%;
+    background-color: #AADAF5;
+}
+#treasure-reset {
+    display: none;
+    padding: 5px 11px;
+    font-size: 19px;
+    background-color: #EFF9FF;
+    border: 3px solid #DEF1FF;
+    color: #0068AB;
+    transition: all 0.6s;
+}
+#treasure-reset:hover {
+    scale: 107%;
+    background-color: #AADAF5;
+}
+#return-wordle {
+    display: none;
+    padding: 5px 11px;
+    font-size: 19px;
+    background-color: #EFF9FF;
+    border: 3px solid #DEF1FF;
+    color: #0068AB;
+    transition: all 0.6s;
+}
+#return-wordle:hover {
+    scale: 107%;
+    background-color: #AADAF5;
+}
