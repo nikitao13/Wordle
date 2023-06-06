@@ -120,7 +120,7 @@ div.footer:hover {
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
-    margin-top: 5vh;
+    /*margin-top: 5vh;*/
     margin-bottom: 5vh;
     border: 4px solid white;
     padding: 15px;
@@ -143,6 +143,7 @@ div.footer:hover {
     border-color: white;
     opacity: 50%;
 }
+
 .key:active {
     background-color: black;
     color: #DEF1FF;
@@ -158,6 +159,12 @@ div.footer:hover {
 
 }
 @media screen and (max-width: 570px) {
+    #result-msg {
+        font-size: 18px;
+    }
+    .options {
+        margin-top: 30px;
+    }
     .keyboard {
         max-width: 390px;
         height: 20vh;
@@ -297,4 +304,17 @@ div.footer:hover {
 #return-wordle:hover {
     scale: 107%;
     background-color: #AADAF5;
+}
+
+#hints {
+    /*display: none;*/
+    margin-top: 15px;
+    padding: 5px 11px;
+    background-color: #EFF9FF;
+    border: 2px solid #DEF1FF;
+    width: 16vh;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+    text-align: justify;
 }

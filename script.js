@@ -17,6 +17,7 @@ const loseAudio = document.getElementById("lose-audio")
 const keyAudio = document.getElementById("key-click")
 const squareAudio = document.getElementById("square-click")
 const buttons = document.querySelectorAll(".options")
+const hintsMsg = document.getElementById("hints")
 
 // initialize counters
 let rowNum = 1;
@@ -233,10 +234,14 @@ function randomSquare() {
 }
 function generateTreasure() {
     reset();
+    if (hints > 0) {
+        hintsMsg.textContent = `Hints remaining: ${hints}`;
+        hintsMsg.style.display = "block";
+    }
     wordleBtn.style.display = "inline";
     attempts = 0;
     y = 0;
-    resultMsg.textContent = "Find the treasure! You have 5 guesses.";
+    resultMsg.textContent = "Find the treasure! You have 6 guesses.";
     treasureBtn.style.display = "none";
     treasureResetBtn.style.display = "inline";
     for (let square of squares) {
@@ -246,6 +251,20 @@ function generateTreasure() {
     for (let key of keyboardKey) {
         key.removeEventListener("click", keyPress);
         key.removeEventListener("click", playKeySound);
+        key.addEventListener("mouseenter", function() {
+            key.style.backgroundColor = "#AADAF5";
+            key.style.opacity = "50%";
+            key.style.borderColor = "white";
+            key.style.transition = "all 0.15s";
+            key.style.scale = "102%";
+        })
+        key.addEventListener("mouseleave", function() {
+            key.style.backgroundColor = "#EFF9FF";
+            key.style.opacity = "100%";
+            key.style.border = "3px solid #DEF1FF";
+            key.style.scale = "100%"
+
+        })
     }
     let randomSquare1 = randomSquare();
     randomSquare1.classList.add("treasure")
@@ -254,10 +273,11 @@ function generateTreasure() {
     randomSquare2.classList.add("treasure")
     console.log(randomSquare2);
     let randomSquare3 = randomSquare();
-    randomSquare3.classList.add("treasure")
+    randomSquare3.classList.add("treasure");
     console.log(randomSquare3);
 }
 
+let hints = 0;
 let attempts = 0;
 let y = 0;
 function userGuess(event) {
@@ -267,8 +287,8 @@ function userGuess(event) {
         if (event.target.classList.contains("treasure")) {
             event.target.style.backgroundColor = "green";
             event.target.style.opacity = "75%";
-            resultMsg.textContent = `Find the treasure! You have ${guessesLeft} guesses.`;
             attempts--
+            resultMsg.textContent = `Find the treasure! You have ${guessesLeft} guesses.`;
             y++
         } else {
             resultMsg.textContent = `Find the treasure! You have ${guessesLeft} guesses.`;
@@ -281,6 +301,9 @@ function userGuess(event) {
         resultMsg.textContent = "You found all 3 chests! Congratulations!"
         playWinSound();
         attempts = 6;
+        
+        hints++
+        
         for (let square of squares) {
             if (square.classList.contains("treasure")) {
                 square.classList.remove("treasure");
@@ -318,6 +341,11 @@ function wordleMode() {
     }
     attempts = 0;
     y = 0;
+    
+    if (hints > 0) {
+        hintsMsg.textContent = `Hints remaining: ${hints}`;
+        hintsMsg.style.display = "block";
+    }
 }
 
 function playSound() {
