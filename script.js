@@ -18,6 +18,7 @@ const keyAudio = document.getElementById("key-click")
 const squareAudio = document.getElementById("square-click")
 const buttons = document.querySelectorAll(".options")
 const hintsMsg = document.getElementById("hints")
+const hintsBtn = document.getElementById("hints-btn")
 
 // initialize counters
 let rowNum = 1;
@@ -43,6 +44,9 @@ enterKey.addEventListener("click", enter);
 treasureBtn.addEventListener("click", generateTreasure);
 treasureResetBtn.addEventListener("click", generateTreasure);
 wordleBtn.addEventListener("click", wordleMode);
+hintsBtn.addEventListener("click", showHint);
+hintsMsg.addEventListener("click", freeHint);
+
 
 // backspace function
 function backspace() {
@@ -210,11 +214,13 @@ function keyPress(event) {
 }
 
 function reset() {
+    lettersGiven = [];
     secretWord = randomWord();
     console.log(secretWord);
     lettersOfWord = secretWord.split("");
     rowNum = 1;
     i = 0;
+    hintsUsed = 0;
     resultMsg.textContent = "Guess the word!";
     for (let square of squares) {
         square.textContent = "";
@@ -239,6 +245,7 @@ function generateTreasure() {
         hintsMsg.style.display = "block";
     }
     wordleBtn.style.display = "inline";
+    hintsBtn.style.display = "none";
     attempts = 0;
     y = 0;
     resultMsg.textContent = "Find the treasure! You have 6 guesses.";
@@ -327,7 +334,8 @@ function userGuess(event) {
 
 
 function wordleMode() {
-    wordleBtn.style.display = "none"
+    wordleBtn.style.display = "none";
+    hintsBtn.style.display = "inline";
     treasureResetBtn.style.display = "none";
     treasureBtn.style.display = "inline";
     reset();
@@ -346,6 +354,43 @@ function wordleMode() {
         hintsMsg.textContent = `Hints remaining: ${hints}`;
         hintsMsg.style.display = "block";
     }
+}
+
+function randomHint() {
+    return Math.floor(Math.random() * lettersOfWord.length);
+}
+let latestHint = ""
+let lettersGiven = [];
+let hintsUsed = 0;
+let maxHints = 3;
+function showHint() {
+    let newHint = ""
+    if (hints > 0 && hintsUsed < maxHints) {
+        if (lettersGiven.length < lettersOfWord.length) {
+            let randomIndex = randomHint();
+            newHint = secretWord[randomIndex];
+            while (lettersGiven.includes(newHint) && lettersGiven.length < lettersOfWord.length) {
+                randomIndex = randomHint();
+                newHint = secretWord[randomIndex];
+            }
+            lettersGiven.push(newHint);
+        }
+        latestHint = newHint;
+        resultMsg.textContent = `Word contains: ${latestHint}`;
+        hints--;
+        hintsUsed++;
+        hintsMsg.textContent = `Hints remaining: ${hints}`;
+    } else if (hintsUsed === 3) {
+        resultMsg.textContent = `Max hints reached. ${lettersGiven.join(" ")}`
+    } else {
+        resultMsg.textContent = `No hints available. ${lettersGiven.join(" ")}`
+        hintsMsg.style.display = "none";
+    }
+}
+
+function freeHint() {
+    hints++
+    hintsMsg.textContent = `Hints remaining: ${hints}`;
 }
 
 function playSound() {
@@ -375,3 +420,4 @@ function playSquareSound() {
     squareAudio.currentTime = 0;
     squareAudio.play();
 }
+
