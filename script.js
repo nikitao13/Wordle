@@ -1,5 +1,5 @@
 // import valid word array
-import validWords from "/wordlist.js"
+import validWords from "./wordlist.js"
 
 // get DOM elements
 const resultMsg = document.getElementById("result-msg")
@@ -252,6 +252,8 @@ function generateTreasure() {
     treasureBtn.style.display = "none";
     treasureResetBtn.style.display = "inline";
     for (let square of squares) {
+        square.removeEventListener("click", userGuess);
+        square.removeEventListener("click", playSquareSound);
         square.addEventListener("click", userGuess);
         square.addEventListener("click", playSquareSound);
     }
@@ -305,17 +307,18 @@ function userGuess(event) {
     }
     attempts++
     if (y === 3) {
-        resultMsg.textContent = "You found all 3 chests! Congratulations!"
-        playWinSound();
         attempts = 6;
-        
+        setTimeout(function() {
+            alert("You found all 3 chests! Congratulations!")
+        }, 700)
+        playWinSound();
         hints++
-        
         for (let square of squares) {
             if (square.classList.contains("treasure")) {
                 square.classList.remove("treasure");
             }
         }
+        generateTreasure();
         return;
     }
     if (attempts > 6) {
