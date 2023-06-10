@@ -300,7 +300,8 @@ function reset() {
 
 // FUNCTION TO CHANGE PAGE TO TREASURE HUNT GAME-MODE WHERE USERS CAN PLAY FOR WORDLE HINTS
 function generateTreasure() {
-    reset();
+    resetCounters();
+    resetKeysDefault();
     if (hints > 0) {
         hintsMsg.textContent = `Hints remaining: ${hints}`;
         hintsMsg.style.display = "block";
